@@ -32,6 +32,9 @@ input{
 
 @media screen and (max-device-width:640px){
 
+    #tform{
+        display: none; 
+    }
     #head_left>img{
         display: none;
         
@@ -49,7 +52,7 @@ input{
 #drop>div{
     top:1px;
     width: 80px;
-    height: 40px;
+    height: 38px;
     text-align: center;
     padding-top: 20px;
     color: #858585;
@@ -67,7 +70,10 @@ input{
     text-align: center;
     padding-top: 1px;
     border-radius: 0px 0px 20px 20px;
-    box-shadow: 0px 5px 10px 5px #858585;
+    box-shadow: 9px 0px 5px 0px #858585;
+    z-index: 10;
+    position: fixed;
+    margin-top: 60px;
 }
 .dropdown>div{
     margin-top: 20px;
@@ -81,6 +87,8 @@ input{
     width: 100%;
     border: #ccc solid 1px;
     display: flex;
+    z-index: 1;
+    position: fixed;
 }
 #head:hover{
     
@@ -278,22 +286,31 @@ input{
     background-color: rgb(249, 247, 247);
     bottom: 0px;
     margin-left: 20px;
-    padding:20px;
+    padding:25px;
     border: 2px solid #000;
     text-align: center;
     font-size: 20px;
     
 }
+#footer_left>img{
+    overflow: hidden;
+    width: 100%;
+}
 #to_top{
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     right: 20px;
+    border-radius: 5px;
     bottom: 40px;
     border: 2px solid #000;
     background-color: #fff;
     color: #000;
     cursor: pointer;
     z-index: 9;
+    text-align: center;
+}
+.tbody{
+    margin: 20px;
 }
 
