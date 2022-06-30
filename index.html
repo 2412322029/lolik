@@ -1,9 +1,192 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh">
 
 <head>
     <meta charset="utf-8">
-    <title>welcome</title>
-    <meta http-equiv=refresh content="0;url=https://www.tuwenhao.xyz/desktop">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="vue.min.js"></script>
+    <!-- https://cdn.jsdelivr.net/npm/vue/dist/vue.js -->
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+    <script src="main.js" type="text/javascript"></script>
+    <title>HTML</title>
 </head>
+
+<body>
+    <header id="head">
+        <div id="head_left">
+            <img src="./img/5cbeb7e41414c.png" alt="">
+            <span><a href="#">lolik.me</a> </span>
+
+        </div>
+        <div id="head_right">
+            <div><a href="#">something</a></div>
+            <div><a href="#">something</a></div>
+        </div>
+        <div>
+
+            <!-- <button class="bon" onclick="show('tishi')">登录
+            </button> -->
+            <button class="bon" onclick= "javascript:window.open('login.html')">登录
+            </button>
+
+        </div>
+        <div id="drop">
+            <div>
+                <a onclick="change('dropdown')">三</a>
+            </div>
+        </div>
+    </header>
+    <div class="dropdown">
+        <div><a href="#">something</a></div>
+        <div><a href="#">something</a></div>
+        <div><a href="#">something</a></div>
+    </div>
+    <div class="tishi">
+        <div id="tishi_head">
+            提示
+        </div>
+        <div class="x" onclick="hiddenbox('tishi')">+</div>
+        <div id="tishi_c">
+            {{ t }}
+        </div>
+    </div>
+    <div id="app">
+        <div v-for="(item,index) in test" :key="item.message">
+            <a :href="item.url">
+                <img :src="item.images" alt="可恶的refer'er">
+                <div>
+                    <article>{{ item.title }}</article>
+                    <p>{{ item.content }}</p>
+                </div>
+            </a>
+        </div>
+
+        <div v-show="show" id="tt">
+            <label >
+                <span id="mhead">拖动</span>
+                <span> 标题:</span> <input type="text" name="title" v-model="title">
+                <span>指向链接:</span> <input type="text" name="url" v-model="url">
+                <span> 内容: </span> <input type="text" name="content" v-model="content">
+                <span>图片地址:</span> <input type="text" name="images" v-model="images">
+                <div class="x" @click="show=!show">+</div>
+                <button class="bon" @click="add">保存</button>
+            </label>
+        </div>
+        <table>
+            <tr>
+                <th>title</th>
+                <th>url</th>
+                <th>content</th>
+                <th>images</th>
+
+                <th><button class="bon" @click="show=!show">添加/关闭</button> </th>
+            </tr>
+            <tr v-for="(item,index) in test">
+                <td>{{ item.title }}</td>
+                <td>{{ item.url }}</td>
+                <td>{{ item.content }}</td>
+                <td>{{ item.images }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://molik.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <div class="footer">
+        <div id="footer_left">二维码</div>
+        <div id="footer_right"></div>
+    </div>
+    <a onclick="back_top()">
+        <div id="to_top">一个向上小箭头</div>
+    </a>
+
+
+</body>
+
+<script>
+    var test = []
+    var app = new Vue({
+        el: '#app',
+        data: {
+            test: [
+                {
+                    title: 'markdown Latex公式',
+                    url: './md/MarkdownLatex .md',
+                    content: '添加公式的方法1、行内公式$行内公式2、行间公式',
+                    images: './img/5cbeb7e41414c.png'
+                },
+                {
+                    title: 'markdown 图表', url: './md/Markdownmermaid.md',
+                    content: '一.流程图1. 绘图方向',
+                    images: './img/5cbeb7e41414c.png'
+                },
+                {
+                    title: 'Markdown', url: './md/Markdownyf.md',
+                    content: 'Markdown是一种轻量级标记语言,它以纯文本形式(_易读、易写、易更改_)编写文档,并最终以HTML格式发',
+                    images: './img/5cbeb7e41414c.png'
+                },
+                {
+                    title: 'tuwenhao.xyz', url: 'https://tuwenhao.xyz',
+                    content: 'come on',
+                    images: './img/5cbeb7e41414c.png'
+                },
+                {
+                    title: 'unrun.top', url: 'https://unrun.top',
+                    content: 'wordpress',
+                    images: './img/5cbeb7e41414c.png'
+                }
+                
+
+            ],
+            title : '',
+            url: '',
+            content:'',
+            images:'',
+            show: false
+        },
+        methods: {
+            add() {
+                var obj = {};
+                obj.title = this.title;
+                obj.url = this.url;
+                obj.content = this.content;
+                obj.images = this.images;
+                this.test.push(obj);
+
+            },
+
+        }
+
+    })
+    var tishi_c = new Vue({
+        el: '#tishi_c',
+        data: {
+            t: "没有做"
+        }
+    })
+</script>
+<script id="dsq-count-scr" src="//molik.disqus.com/count.js" async></script>
+
+</html>
